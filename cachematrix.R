@@ -1,8 +1,16 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions create a list containing a matrix, the cached copy of its 
+## inverse, and four functions that can act on that list. 
+## makeCacheMatrix() creates the list, using a normal matrix as input. 
+## cacheSolve() takes the list as input, and returns the inverse of the matrix 
+## inside. 
 
-## Write a short comment describing this function
-
+## This function creates a cached matrix list using a normal matrix as input. 
+## There are four functions that can act on this cached matrix. 
+## get() returns the original matrix. 
+## set() sets the matrix to the new input. The cached inverse is nullified 
+## because it is no longer valid. 
+## getinv() returns the cached copy of the inverse. 
+## setinv() sets the inverse to the input. 
 makeCacheMatrix <- function(x = matrix()) {
     i <- NULL
     set <- function(y) {
@@ -18,10 +26,11 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
 
+## This function finds the inverse of the matrix x. 
+## If the inverse has already been calculated, it returns the cached copy. 
+## Otherwise, it calculates the inverse and stores it in the cache. 
 cacheSolve <- function(x, ...) {
-    ## Return a matrix that is the inverse of 'x'
     i <- x$getinv()
     if(!is.null(i)) {
         message("getting cached data")
